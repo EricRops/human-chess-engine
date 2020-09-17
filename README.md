@@ -6,4 +6,4 @@
 
 ## Use Case IN PROGRESS. Should be similar to either:
 - A platform to play chess against a database INSTEAD of a computer
-- Chess openings explorer 
+- Chess openings explorer using a graph database
