@@ -1,9 +1,9 @@
-# chess-platform
+# Play Chess Against a Database
 
 ## Dataset
 - 1.5 billion games from lichess.org (available for public download)
 - Chess.com API (Over 1 billion games stored. Will extract as many as I can)
 
-## Use Case IN PROGRESS. Should be similar to either:
+## Use Case:
 - A platform to play chess against a database INSTEAD of a computer
-- Chess openings explorer using a graph database
+- The opponents moves are made through optimized queries of the database
