@@ -36,7 +36,7 @@ ssh master
 
 # Run script!
 source /usr/local/spark/conf/spark-env.sh
-source ~/.profile
+# source ~/.profile
 spark-submit \
 	--packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.7 \
 	--conf spark.executor.extraJavaOptions=-Dcom.amazonaws.services.s3.enableV4=true \
@@ -53,4 +53,11 @@ spark-submit \
 	--master spark://$master_priv_ip:7077 ./src/test_spark_s3.py
 	
 /usr/local/spark/sbin/stop-all.sh
+
+# Manbir's command
+spark-submit --packages com.amazonaws:aws-java-sdk:1.7.4,org.apache.hadoop:hadoop-aws:2.7.7  \
+	--conf spark.executor.extraJavaOptions=-Dcom.amazonaws.services.s3.enableV4=true \
+	--conf spark.driver.extraJavaOptions=-Dcom.amazonaws.services.s3.enableV4=true \
+	--master spark:// yourmasterDNShere:7077 etl_json2parquet_v1.py
+
 

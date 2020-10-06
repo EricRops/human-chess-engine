@@ -1,4 +1,5 @@
 #!/bin/bash
+# For reference, command to remove bottom line of file: sed -i '$ d' foo.txt
 
 # Video from Bastian on setting up VPC and security groups
 # https://www.youtube.com/watch?v=3taULsvuZUM&feature=youtu.be
@@ -8,39 +9,43 @@
 
 # Set profile to Insight credentials
 export AWS_PROFILE=insight
-num_nodes=3
 pem_file="~/.ssh/eric-rops-IAM-keypair.pem"
+num_nodes=3
+type="m5.large"
 
 aws ec2 run-instances \
 	--image-id ami-07a29e5e945228fa1 \
 	--count $num_nodes \
-	--instance-type m5.large \
+	--instance-type $type \
 	--region us-west-2 \
 	--placement AvailabilityZone=us-west-2a \
 	--associate-public-ip-address \
 	--subnet-id subnet-0ae35fa0d9ebe1010 \
 	--key-name eric-rops-IAM-keypair \
-	--security-group-ids sg-04bf65989d4033a0b sg-0bd1097bda280de96 sg-0d774a6a1bfebe338
+	--security-group-ids sg-04bf65989d4033a0b sg-0bd1097bda280de96 sg-0d774a6a1bfebe338 \
+	--ebs-optimized \
+	--block-device-mapping "[ { \"DeviceName\": \"/dev/xvda\", \"Ebs\": { \"VolumeSize\": 200 } } ]"
+	
 # 	--iam-instance-profile Name=SSMInstanceProfile
 	
 master_dns=$(aws ec2 describe-instances \
 --query 'Reservations[*].Instances[?AmiLaunchIndex==`0`].[PublicDnsName]' \
---filters Name=instance-state-name,Values=running \
+--filters Name=instance-state-name,Values=running Name=instance-type,Values=$type \
 --output text)
 
 master_priv_ip=$(aws ec2 describe-instances \
 --query 'Reservations[*].Instances[?AmiLaunchIndex==`0`].[PrivateIpAddress]' \
---filters Name=instance-state-name,Values=running \
+--filters Name=instance-state-name,Values=running Name=instance-type,Values=$type \
 --output text)
 
 workers_dns=$(aws ec2 describe-instances \
 --query 'Reservations[*].Instances[?AmiLaunchIndex > `0`].[PublicDnsName]' \
---filters Name=instance-state-name,Values=running \
+--filters Name=instance-state-name,Values=running Name=instance-type,Values=$type \
 --output text)
 
 workers_priv_ip=$(aws ec2 describe-instances \
 --query 'Reservations[*].Instances[?AmiLaunchIndex > `0`].[PrivateIpAddress]' \
---filters Name=instance-state-name,Values=running \
+--filters Name=instance-state-name,Values=running Name=instance-type,Values=$type \
 --output text)
 
 # Convert strings to arrays to access individual IPs
