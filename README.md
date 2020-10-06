@@ -1,4 +1,4 @@
-# Play Chess Against a Database
+# Play Chess Against a Database: In Progress :D
 
 ## Dataset
 - 1.5 billion games from lichess.org (available for public download)
