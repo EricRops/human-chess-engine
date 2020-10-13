@@ -20,6 +20,10 @@ cd ./app
 sudo apt-get update
 sudo apt-get install python3-venv
 
+# TMUX windows so EC2 can still run after closing your ssh connection
+tmux new -s mywindow # Run script here, leave whenever
+tmux a -t mywindow   # When you log back in, come here to see progress
+
 sudo su -
 cd /home/ubuntu/app/
 python3 -m venv venv
