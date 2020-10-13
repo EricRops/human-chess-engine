@@ -1,4 +1,6 @@
-<img src="images/chess-cover.PNG">
+<p align="center">
+    <img src="images/chess-cover.PNG" />
+</p>
 
 # Human Chess Engine: Play Chess Against a Database!
 ## Insight Data Engineering
@@ -12,8 +14,8 @@ About 20 million users are active on the top three online chess platforms. The m
 However, I wanted a way to play against all the humans that have ever played before.
 
 ## Solution
-Play chess against a historic database! The user makes their move. The database returns the **most common next move.**
-A demo of the final product is here: ADD YOUTUBE LINK
+Play chess against a historic database! The user makes their move. The database returns the **most common next move.**  
+A demo of the final product is here: ADD YOUTUBE LINK  
 The website of the Flask app is here: [chess.clouddata.club](chess.clouddata.club)
 
 ## Dataset
@@ -27,7 +29,7 @@ Chess games are stored in Portable Game Notation (PGN) files. Below is a sample 
 <img src="images/pgn-file.png">
 
 ## Data Pipeline
-<img src="images/pipeline.png">
+<img src="images/pipeline.PNG">
 
 ## Cassandra Data Model
 Two tables were stored in Cassandra:
