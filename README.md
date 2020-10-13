@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="images/chess-cover.PNG" />
+    <img src="images/chess-cover.PNG" width="800" height="400"/>
 </p>
 
 # Human Chess Engine: Play Chess Against a Database!
