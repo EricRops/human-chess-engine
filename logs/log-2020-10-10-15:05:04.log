@@ -1,0 +1,37 @@
+INFO: 2020-10-10 10:42:34,143: Reading pgn data from s3a://erops-chess/lichess-db/lichess_db_standard_rated_2016-0[6-9]* ..........
+INFO: 2020-10-10 10:42:58,571: 25708726 total games loaded .............. 
+INFO: 2020-10-10 10:44:44,323: 25708721 Games processed
+INFO: 2020-10-10 10:44:44,323: Games DF Schema:
+INFO: 2020-10-10 10:44:44,325: root
+ |-- event: string (nullable = true)
+ |-- gameid: string (nullable = true)
+ |-- white: string (nullable = true)
+ |-- black: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- eco: string (nullable = true)
+ |-- opening: string (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- termination: string (nullable = true)
+ |-- moves: string (nullable = true)
+ |-- datetime: string (nullable = false)
+ |-- timestamp: long (nullable = true)
+
+INFO: 2020-10-10 10:44:44,325: Top few rows of the games DF:
+INFO: 2020-10-10 10:49:58,393: [Row(event='Rated Blitz game', gameid='lichess/002BPhMe', white='wireless78', black='Chessibague', result='1/2-1/2', whiteelo=2366, blackelo=2380, eco='A25', opening="English : King's English Variation, Taimanov Variation", timecontrol='180+0', termination='Normal', moves='1. c4 e5 2. g3 Nc6 3. Nc3 g6 4. Bg2 Bg7 5. Nf3 Nge7 6. O-O O-O 7. Nd5 d6 8. d3 h6 9. Rb1 Bg4 10. b4 Qd7 11. b5 Nd8 12. a4 c6 13. Nxe7+ Qxe7 14. bxc6 bxc6 15. Ba3 c5 16. Nd2 Ne6 17. Bxa8 Rxa8 18. f3 Bh3 19. Re1 f5 20. Qb3 e4 21. Qb7 Qxb7 22. Rxb7 Bc3 23. Rd1 Bd4+ 24. Kh1 exd3 25. exd3 Be3 26. Nf1 Bf2 27. Bb2 f4 28. g4 Ng5 29. Nd2 Re8 30. Ne4 Nxe4 31. dxe4 h5 32. Rxd6 hxg4 33. Rxg6+ Kf8 34. Rgg7 Rd8 35. Rbd7 Rxd7 36. Rxd7 gxf3 37. Rg7 Bd4 38. Bxd4 cxd4 39. Kg1 d3 40. Rb7 d2 41. Rb1 f2+ 42. Kxf2 Bg4 43. h4 d1=Q 44. Rxd1 Bxd1 45. e5 Ke7 46. c5 Bxa4 47. h5 Bc6 48. h6 Kf7 49. e6+ Kg6 50. e7 Kxh6 51. e8=Q Bxe8 52. Kf3 Kg6 53. Kxf4 Kf6 54. Ke4 Ke6 55. Kd4 Bb5 56. Kc3 Kd5 57. Kb2 Kxc5 58. Ka1 Kb4 59. Kb1 Ka3 60. Ka1 Bc4 61. Kb1 Bb3 62. Ka1 Kb4 63. Kb1 Kc3 64. Ka1 a6 65. Kb1 Bc4 66. Ka1 Bd3 67. Ka2 Kb4 68. Ka1 Ka4 69. Ka2 Bc4+ 70. Ka1 Ka3 71. Kb1 Kb3 72. Ka1 Bb5 73. Kb1 Bc6 74. Ka1 Be4 1/2-1/2', datetime='2016.08.05 13:38:35', timestamp=1470404315), Row(event='Rated Bullet tournament https://lichess.org/tournament/kRkkk3Q5', gameid='lichess/003s7IXP', white='ryrycashmo', black='piwot3', result='1-0', whiteelo=1687, blackelo=2013, eco='A01', opening='Nimzo-Larsen Attack: Modern Variation #4', timecontrol='60+0', termination='Normal', moves='1. b3 { [%eval -0.03] } 1... e5 { [%eval -0.05] } 2. Bb2 { [%eval 0.01] } 2... Nc6 { [%eval -0.08] } 3. e3 { [%eval -0.17] } 3... Bc5?! { [%eval 0.43] } 4. Bb5 { [%eval 0.31] } 4... d6 { [%eval 0.48] } 5. Bxc6+ { [%eval 0.0] } 5... bxc6 { [%eval 0.02] } 6. d4 { [%eval 0.01] } 6... Bb6?! { [%eval 0.86] } 7. dxe5 { [%eval 0.84] } 7... d5 { [%eval 0.91] } 8. Qf3 { [%eval 0.59] } 8... Ne7 { [%eval 0.6] } 9. Ne2 { [%eval 0.58] } 9... O-O { [%eval 0.48] } 10. Qg3 { [%eval 0.24] } 10... Ng6 { [%eval 0.4] } 11. Nf4 { [%eval 0.43] } 11... Be6?! { [%eval 1.1] } 12. Nxe6 { [%eval 1.08] } 12... fxe6 { [%eval 1.12] } 13. Nd2 { [%eval 1.1] } 13... Rf5 { [%eval 1.28] } 14. Nf3 { [%eval 1.07] } 14... Qe7 { [%eval 1.02] } 15. h4 { [%eval 0.94] } 15... Raf8?! { [%eval 1.72] } 16. h5 { [%eval 1.75] } 16... Nh8 { [%eval 1.68] } 17. h6 { [%eval 1.6] } 17... g6 { [%eval 1.69] } 18. Nh4?? { [%eval -2.31] } 18... R5f7?? { [%eval 1.5] } 19. c4?? { [%eval -5.71] } 19... a5?? { [%eval 0.96] } 20. O-O { [%eval 1.09] } 20... Qd7? { [%eval 2.47] } 21. cxd5?! { [%eval 1.52] } 21... Re7?? { [%eval 4.77] } 22. dxc6 { [%eval 4.73] } 22... Qxc6 { [%eval 4.4] } 23. Rac1? { [%eval 3.36] } 23... Qd7 { [%eval 3.6] } 24. Rfd1 { [%eval 3.63] } 24... Qe8 { [%eval 4.11] } 25. Rc6?? { [%eval -1.82] } 25... Nf7?? { [%eval 24.23] } 26. Nxg6 { [%eval 23.25] } 26... Nd8?! { [%eval #2] } 27. Nxe7+ { [%eval #1] } 27... Kh8 { [%eval #1] } 28. Qg7# 1-0', datetime='2016.07.27 06:11:56', timestamp=1469599916), Row(event='Rated Bullet game', gameid='lichess/0045oLLF', white='Ashkanjah', black='papadesarah', result='1-0', whiteelo=1412, blackelo=1235, eco='C64', opening='Ruy Lopez: Classical Variation', timecontrol='120+0', termination='Time forfeit', moves='1. e4 { [%eval 0.21] } 1... e5 { [%eval 0.12] } 2. Nf3 { [%eval 0.19] } 2... Nc6 { [%eval 0.25] } 3. Bb5 { [%eval 0.08] } 3... Bc5 { [%eval 0.39] } 4. Nc3 { [%eval 0.05] } 4... a6 { [%eval 0.14] } 5. Ba4 { [%eval 0.03] } 5... b5 { [%eval 0.25] } 6. Bb3 { [%eval 0.3] } 6... Na5?! { [%eval 1.03] } 7. O-O?! { [%eval 0.22] } 7... Nxb3?! { [%eval 1.04] } 8. axb3 { [%eval 1.03] } 8... Nf6 { [%eval 1.15] } 9. Nxe5 { [%eval 1.1] } 9... d6 { [%eval 1.39] } 10. Nf3 { [%eval 0.99] } 10... Bg4 { [%eval 1.24] } 11. d4 { [%eval 1.31] } 11... Bb6 { [%eval 1.4] } 12. Bg5 { [%eval 1.3] } 12... O-O?! { [%eval 1.98] } 13. h3? { [%eval 0.86] } 13... Bh5?! { [%eval 1.43] } 14. Qd3 { [%eval 0.94] } 14... h6?! { [%eval 1.46] } 15. Bh4?! { [%eval 0.77] } 15... Bxf3 { [%eval 0.83] } 16. Qxf3 { [%eval 0.46] } 16... Bxd4 { [%eval 0.44] } 17. Nd5 { [%eval 0.05] } 17... Nxd5?? { [%eval 6.44] } 18. exd5?? { [%eval -3.98] } 18... Bxb2?? { [%eval 6.21] } 19. Rad1?? { [%eval -4.77] } 19... g5?? { [%eval -1.68] } 20. Bg3 { [%eval -1.66] } 20... Be5? { [%eval -0.12] } 21. Rd3?! { [%eval -0.63] } 21... Bxg3 { [%eval -0.33] } 22. Qxg3 { [%eval -0.24] } 22... f6 { [%eval 0.0] } 23. Qg4 { [%eval 0.0] } 23... Qe7 { [%eval 0.06] } 24. Rg3 { [%eval -0.37] } 24... Rae8 { [%eval -0.26] } 25. Qh5 { [%eval -0.46] } 25... Qe2? { [%eval 2.05] } 26. Qg6+ { [%eval 2.2] } 26... Kh8 { [%eval 2.21] } 27. Qxh6+ { [%eval 2.02] } 27... Kg8 { [%eval 2.02] } 28. Qg6+ { [%eval 1.93] } 28... Kh8 { [%eval 2.02] } 29. Qh6+ { [%eval 1.95] } 29... Kg8 { [%eval 1.93] } 30. Qh4? { [%eval 0.0] } 30... Qxc2 { [%eval 0.28] } 31. Qg4 { [%eval -0.1] } 1-0', datetime='2016.07.29 21:55:29', timestamp=1469829329)]
+INFO: 2020-10-10 13:01:17,572: 1749818525 Moves processed
+INFO: 2020-10-10 13:01:17,572: Moves DF Schema:
+INFO: 2020-10-10 13:01:17,583: root
+ |-- gameid: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- moves: string (nullable = false)
+ |-- board_state: string (nullable = true)
+ |-- move_no: integer (nullable = true)
+
+INFO: 2020-10-10 13:01:17,583: Writing df to Cassandra table: chessdb.games .............
+INFO: 2020-10-10 13:24:33,696: Writing complete .............
+INFO: 2020-10-10 13:24:33,696: Writing df to Cassandra table: chessdb.moves .............

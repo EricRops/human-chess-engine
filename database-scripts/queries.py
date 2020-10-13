@@ -2,6 +2,7 @@ import cassandra
 import os
 import glob
 import logging
+import sys
 import pandas as pd  # ONLY used for pretty printing queries :)
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
@@ -16,7 +17,7 @@ logger.addHandler(ch)  # add ch to logger
 
 
 def pandas_factory(colnames, rows):
-    """Function to allow a pandas DF be returned from a cassandra query"""
+    """Function to allow a pandas DF be returned from a Cassandra query"""
     return pd.DataFrame(rows, columns=colnames)
 
 
@@ -31,20 +32,24 @@ def connect(cassandra_seeds, keyspace_name):
 
 def main():
     """
+    - Connect to Cassandra keyspace
+    - Run query to return the most common next move to make, given a board state
     """
-    seeds = ["10.0.0.7"]
+    seeds = ['10.0.0.11', '10.0.0.10']
     keyspace = "chessdb"
     session = connect(cassandra_seeds=seeds, keyspace_name=keyspace)
     session.row_factory = pandas_factory
-    # needed for large queries, else driver will do pagination. Default is 50000.
+    # Needed for large queries, else driver will do pagination. Default is 5000.
     session.default_fetch_size = 10000000
+    session.default_timeout = 60
 
-    board_state = "rnbqkbnr/ppp1pppp/3p4/8/2P5/3P4/PP2PPPP/RNBQKBNR b KQkq"
+    # board_state to search for comes via the command line
+    board_state = sys.argv[1]
     query = """
         SELECT moves, blackelo
         FROM chessdb.moves
         WHERE board_state = '{}'
-        AND blackelo >= 1500
+        AND blackelo > 500
         """.format(board_state)
     rows = session.execute(query)
     df = rows._current_rows

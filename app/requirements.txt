@@ -1,0 +1,4 @@
+Flask
+python-chess
+cassandra-driver
+pandas

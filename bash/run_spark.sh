@@ -3,14 +3,14 @@
 # Set profile to Insight credentials
 export AWS_PROFILE=insight
 pem_file="~/.ssh/eric-rops-IAM-keypair.pem"
-worker_num_nodes=4
+worker_num_nodes=5
 master_num_nodes=1
 master_type="m5a.large"
 worker_type="c5.2xlarge"
 
 # Get master DNS string
 master_dns=$(aws ec2 describe-instances \
---query 'Reservations[*].Instances[?AmiLaunchIndex==`0`].[PublicDnsName]' \
+--query 'Reservations[0].Instances[?AmiLaunchIndex==`0`].[PublicDnsName]' \
 --filters Name=instance-state-name,Values=running Name=instance-type,Values=$master_type \
 --output text)
 
@@ -42,14 +42,25 @@ spark-submit \
 	--conf spark.worker.cleanup.enabled=true \
 	--conf spark.worker.cleanup.interval=1800 \
 	--conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
-	--conf spark.executor.memory=6g \
-	--master spark://$master_priv_ip:7077 ./data-processing/chess-etl.py
+	--conf spark.driver.memory=6g \
+	--conf spark.executor.memory=13g \
+	--conf spark.executor.cores=4 \
+	--conf spark.executor.instances=10 \
+	--conf spark.sql.shuffle.partitions=300 \
+	--master spark://$master_priv_ip:7077 ./data-processing/chesscom-etl.py
 	
 # Copy logfile to local machine
+exit
 scp -i $pem_file ubuntu@$master_dns:~/logfile.log ./logs
 timestamp=$(date "+%F-%T")
-mv ./logs/logfile.log ./logs/log-$timestamp
+mv ./logs/logfile.log ./logs/log-$timestamp.log
 
 
 /usr/local/spark/sbin/stop-all.sh
+
+
+## Spark parameters that made the job run slower
+
+	--conf spark.default.parallelism=100 \
+
 

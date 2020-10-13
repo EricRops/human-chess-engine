@@ -1,0 +1,38 @@
+INFO: 2020-10-08 08:39:48,061: Reading pgn data from s3a://erops-chess/lichess-db/lichess_db_standard_rated_2015-0*.pgn ..........
+INFO: 2020-10-08 08:40:12,870: 18904292 total games loaded .............. 
+INFO: 2020-10-08 08:41:35,853: 18904282 Games processed
+INFO: 2020-10-08 08:41:35,853: Games DF Schema:
+INFO: 2020-10-08 08:41:35,854: root
+ |-- event: string (nullable = true)
+ |-- gameid: string (nullable = true)
+ |-- white: string (nullable = true)
+ |-- black: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- eco: string (nullable = true)
+ |-- opening: string (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- termination: string (nullable = true)
+ |-- moves: string (nullable = true)
+ |-- datetime: string (nullable = false)
+ |-- timestamp: long (nullable = true)
+
+INFO: 2020-10-08 08:41:35,854: Top few rows of the games DF:
+INFO: 2020-10-08 08:45:51,696: [Row(event='Rated Blitz tournament https://lichess.org/tournament/RKM8Vlkp', gameid='lichess/000H5CDZ', white='wilsonbejarano', black='LeadTOWin', result='0-1', whiteelo=1680, blackelo=1500, eco='C48', opening='Four Knights Game: Spanish Variation', timecontrol='300+0', termination='Time forfeit', moves='', datetime='2015.03.28 02:39:17', timestamp=1427510357), Row(event='Rated Bullet game', gameid='lichess/002Bkgu8', white='ova', black='edgaretto', result='0-1', whiteelo=1251, blackelo=1517, eco='B20', opening='Sicilian Defense', timecontrol='120+0', termination='Normal', moves='1. e4 c5 2. e5 e6 3. Bc4 a6 4. Qf3 b5 5. Bd5 exd5 6. Qxd5 Nc6 7. d4 Bb7 8. dxc5 Rb8 9. Bf4 Nb4 10. Qe4 Bxe4 11. c3 Nc2+ 12. Kd2 Nxa1 13. e6 dxe6+ 14. Bd6 Bxd6 15. cxd6 Qxd6+ 16. Ke3 Qd3+ 17. Kf4 Nf6 18. Nf3 Bxf3 19. gxf3 h6 20. Rg1 g5+ 21. Kg3 Nh5+ 22. Kg2 Nf4+ 23. Kg3 Ne2+ 24. Kg2 Nxg1 25. Kxg1 Qxb1+ 26. Kg2 Rd8 0-1', datetime='2015.05.31 03:49:51', timestamp=1433044191), Row(event='Rated Classical game', gameid='lichess/002arQCo', white='kikimora69', black='gambul', result='0-1', whiteelo=1646, blackelo=1650, eco='C20', opening="King's Pawn Game: Wayward Queen Attack", timecontrol='600+0', termination='Time forfeit', moves='1. e4 e5 2. Qh5 Nc6 3. Bc4 Qf6 4. c3 Qg6 5. Qf3 Bc5 6. b4 Bb6 7. a4 a6 8. a5 Ba7 9. d3 d6 10. h3 Be6 11. Bd5 Nge7 12. c4 Bd4 13. Ra2 O-O 14. Ne2 Bxd5 15. exd5 Nxb4 16. Ra3 Nc2+ 17. Kd1 Nxa3 18. Bxa3 Ba7 19. Kc2 f5 20. Nbc3 f4 21. Rg1 Nf5 22. Ne4 Qe8 23. Ng5 Qa4+ 24. Kb2 h6 25. Ne6 Rf7 26. Ra1 Qd7 27. Qe4 Ne7 28. Ng1 Bxf2 29. Nf3 b5 30. c5 dxc5 31. Nxc5 Bxc5 32. Bxc5 Qxd5 33. Bxe7 Qxe4 34. dxe4 Rxe7 35. Rd1 Kf7 36. Rd5 Rae8 37. Kc3 Re6 38. Rd7+ R8e7 39. Rd5 g5 40. Kb4 Kg6 41. Rc5 h5 42. Rd5 g4 43. hxg4 hxg4 44. Nd2 Rd6 45. Nf1 Rxd5 46. exd5 Rd7 47. Kc5 Rd6 48. Nd2 Kf5 49. Nb3 e4 50. Nd4+ Ke5 0-1', datetime='2015.02.14 12:52:07', timestamp=1423918327)]
+INFO: 2020-10-08 10:21:04,257: 1148654604 Moves processed
+INFO: 2020-10-08 10:21:04,257: Moves DF Schema:
+INFO: 2020-10-08 10:21:04,265: root
+ |-- gameid: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- moves: string (nullable = false)
+ |-- board_state: string (nullable = true)
+ |-- move_no: integer (nullable = true)
+
+INFO: 2020-10-08 10:21:04,265: Writing df to Cassandra table: chessdb.games .............
+INFO: 2020-10-08 10:38:37,955: Writing complete .............
+INFO: 2020-10-08 10:38:37,955: Writing df to Cassandra table: chessdb.moves .............
+INFO: 2020-10-08 15:21:50,962: Writing complete .............

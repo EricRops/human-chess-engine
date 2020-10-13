@@ -1,0 +1,38 @@
+INFO: 2020-10-08 20:15:37,439: Reading pgn data from s3a://erops-chess/lichess-db/lichess_db_standard_rated_2016-0[1]* ..........
+INFO: 2020-10-08 20:15:49,079: 4770358 total games loaded .............. 
+INFO: 2020-10-08 20:16:16,779: 4770357 Games processed
+INFO: 2020-10-08 20:16:16,779: Games DF Schema:
+INFO: 2020-10-08 20:16:16,780: root
+ |-- event: string (nullable = true)
+ |-- gameid: string (nullable = true)
+ |-- white: string (nullable = true)
+ |-- black: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- eco: string (nullable = true)
+ |-- opening: string (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- termination: string (nullable = true)
+ |-- moves: string (nullable = true)
+ |-- datetime: string (nullable = false)
+ |-- timestamp: long (nullable = true)
+
+INFO: 2020-10-08 20:16:16,781: Top few rows of the games DF:
+INFO: 2020-10-08 20:17:20,066: [Row(event='Rated Bullet tournament https://lichess.org/tournament/3ZjFEt6Y', gameid='lichess/004iDTyn', white='jiacomo', black='Whizzz', result='1-0', whiteelo=1787, blackelo=1713, eco='A45', opening='Trompowsky Attack: Classical Defense', timecontrol='60+0', termination='Normal', moves='1. d4 e6 2. Bg5 Nf6 3. Bxf6 Qxf6 4. Nf3 Nc6 5. e4 Nb4 6. e5 Qf5 7. Na3 d5 8. c3 Nc6 9. Bd3 Qg4 10. Rg1 Bxa3 11. bxa3 Na5 12. h3 Qg6 13. Qa4+ b5 14. Qxa5 Qxd3 15. Rd1 Qc2 16. Qxb5+ Ke7 17. Qc5+ Kd8 18. Ng5 a5 19. Nxf7+ Ke8 20. Qxc7 Ba6 21. Nd6+ Kf8 22. Qf7# 1-0', datetime='2016.01.25 10:54:40', timestamp=1453719280), Row(event='Rated Blitz game', gameid='lichess/00C2NxxS', white='marossi', black='BeerusSama', result='1-0', whiteelo=1365, blackelo=1259, eco='C26', opening='Vienna Game: Falkbeer Variation', timecontrol='300+2', termination='Time forfeit', moves='1. e4 e5 2. Nc3 Nf6 3. h3 Nc6 4. Nf3 Bc5 5. a3 O-O 6. d3 Nh5 7. Bg5 f6 8. Bd2 d6 9. Qc1 f5 10. Bh6 fxe4 11. Nxe4 Nf4 12. Bxf4 exf4 13. Nfg5 f3 14. Nxf3 d5 15. Neg5 Re8+ 16. Be2 Qe7 17. O-O Qxe2 18. Qf4 Rf8 19. Qh4 h6 20. Rfe1 Qxf2+ 21. Kh2 Bd6+ 22. Kh1 Bg3 23. Qh5 Rxf3 24. Nxf3 Bd7 25. Qxd5+ Kh7 26. Qxd7 Rf8 27. Re7 Nxe7 28. Qxe7 Bd6 29. Qe4+ Kh8 30. Qxb7 Qg3 31. Qe4 Rf4 32. Qe8+ Rf8 33. Qe4 1-0', datetime='2016.01.13 11:51:38', timestamp=1452685898), Row(event='Rated Bullet game', gameid='lichess/00O0hpqc', white='aavza50', black='Jixid', result='1-0', whiteelo=1834, blackelo=1964, eco='A00', opening='Mieses ', timecontrol='30+0', termination='Time forfeit', moves='1. d3 c5 2. Bd2 d6 3. e3 Nf6 4. Ke2 Bg4+ 5. f3 Bd7 6. Qe1 Nc6 7. Ba5 e6 8. Bxd8 Kxd8 9. b4 d5 10. b5 d4 11. bxc6 Bxc6 12. exd4 cxd4 13. Kd1 Nd5 14. Be2 Bb4 15. c3 Nxc3+ 16. Nxc3 Bxc3 17. Qf1 Bxa1 18. Kc2 Ba4+ 19. Kb1 Bc3 20. Bd1 Bc6 21. Bb3 a5 22. Ne2 a4 23. Nxc3 axb3 24. axb3 dxc3 25. Kc2 b5 26. Kxc3 Ke7 27. Kb4 Rhc8 28. Kc5 Bxf3+ 29. Kb4 Bd5 30. Rg1 Ra1 31. g3 Rxf1 32. Rxf1 Rd8 33. Re1 f6 34. Rf1 e5 35. g4 Kf7 36. g5 f5 37. h4 g6 38. h5 Ke6 39. hxg6 hxg6 40. Rh1 Bg2 41. Rh6 Bd5 42. Rxg6+ Kf7 43. Rh6 Rc8 44. Rf6+ Kg7 45. Rh6 Rc4+ 46. Kxb5 Bc6+ 47. Kb6 1-0', datetime='2016.01.23 17:44:12', timestamp=1453571052)]
+INFO: 2020-10-08 20:42:12,021: 322892141 Moves processed
+INFO: 2020-10-08 20:42:12,022: Moves DF Schema:
+INFO: 2020-10-08 20:42:12,028: root
+ |-- gameid: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- moves: string (nullable = false)
+ |-- board_state: string (nullable = true)
+ |-- move_no: integer (nullable = true)
+
+INFO: 2020-10-08 20:42:12,028: Writing df to Cassandra table: chessdb.games .............
+INFO: 2020-10-08 20:45:47,394: Writing complete .............
+INFO: 2020-10-08 20:45:47,394: Writing df to Cassandra table: chessdb.moves .............
+INFO: 2020-10-08 22:02:29,698: Writing complete .............

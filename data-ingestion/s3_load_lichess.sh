@@ -51,7 +51,7 @@ tmux a -t mywindow   # When you log back in, come here to see progress
 THIS_YEAR="2020"
 S3_BUCKET="erops-chess"
 S3_KEY="lichess-db"
-THIS_MONTH="05"
+THIS_MONTH="06"
 
 function transfer_data(){
 	THIS_URL="https://database.lichess.org/standard/lichess_db_standard_rated_$THIS_YEAR-$THIS_MONTH.pgn"

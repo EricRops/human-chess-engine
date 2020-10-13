@@ -33,10 +33,7 @@ def connect(cassandra_seeds, keyspace_name, rep_factor):
 
 
 def create_tables(session):
-    # Drop tables if they exist first
-    session.execute("DROP TABLE IF EXISTS games")
-    session.execute("DROP TABLE IF EXISTS moves")
-
+    """Define schemas and create the games and moves tables in Cassandra"""
     query = "CREATE TABLE IF NOT EXISTS games "
     # Partition by eco (opening sequence), sort by timestamp
     query = query + "(event varchar, gameid text, white varchar, black varchar, result text, \
@@ -47,18 +44,22 @@ def create_tables(session):
     logger.info("Creating games table ................")
 
     query = "CREATE TABLE IF NOT EXISTS moves "
-    # Partition by board_state, sort by moves and blackelo
-    query = query + "(gameid text, result text, whiteelo int, blackelo int, eco text, timecontrol varchar, \
-                      termination varchar, moves varchar, board_state varchar, move_no int, \
-                      PRIMARY KEY (board_state, blackelo, moves))"
+    # Partition by board_state, sort by blackelo and gameid
+    # VERY IMPORTANT: If gameid is not included in the PK, most moves are considered "duplicates" and are dropped
+    query = query + "(gameid text, result text, whiteelo int, blackelo int, timecontrol varchar, \
+                      moves varchar, board_state varchar, move_no int, \
+                      PRIMARY KEY (board_state, blackelo, gameid))"
     session.execute(query)
     logger.info("Creating moves table ................")
 
 
 def main():
     """
+    - Create a Cassandra keyspace if it does not exist
+    - Connect to the keyspace
+    - Create games and moves tables if they do not exist
     """
-    seeds = ["10.0.0.7"]
+    seeds = ['10.0.0.11', '10.0.0.10']
     keyspace = "chessdb"
     rep_factor = 2
     session = connect(cassandra_seeds=seeds, keyspace_name=keyspace, rep_factor=rep_factor)

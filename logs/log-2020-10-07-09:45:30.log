@@ -1,0 +1,38 @@
+INFO: 2020-10-07 06:28:04,713: Reading pgn data from s3a://erops-chess/lichess-db/lichess_db_standard_rated_2014*.pgn ..........
+INFO: 2020-10-07 06:28:22,393: 11595443 total games loaded .............. 
+INFO: 2020-10-07 06:29:10,965: 11595430 Games processed
+INFO: 2020-10-07 06:29:10,965: Games DF Schema:
+INFO: 2020-10-07 06:29:10,967: root
+ |-- event: string (nullable = true)
+ |-- gameid: string (nullable = true)
+ |-- white: string (nullable = true)
+ |-- black: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- eco: string (nullable = true)
+ |-- opening: string (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- termination: string (nullable = true)
+ |-- moves: string (nullable = true)
+ |-- datetime: string (nullable = false)
+ |-- timestamp: long (nullable = true)
+
+INFO: 2020-10-07 06:29:10,967: Top few rows of the games DF:
+INFO: 2020-10-07 06:31:37,239: [Row(event='Rated Classical game', gameid='lichess/001YOI9o', white='labarreraman', black='lukas82', result='1-0', whiteelo=1403, blackelo=1435, eco='C20', opening="King's Pawn Game: Leonardis Variation", timecontrol='600+4', termination='Normal', moves='1. d3 e5 2. e4 d6 3. Bd2 h6 4. Qe2 g5 5. Nc3 Nc6 6. Nf3 g4 7. Ng1 Nf6 8. O-O-O Nd4 9. Qe3 Be6 10. Kb1 Qd7 11. Nge2 Qc6 12. b3 Nxb3 13. axb3 Qa6 14. d4 Qa3 15. Nc1 exd4 16. Qxd4 Bg7 17. Bb5+ Bd7 18. Bxd7+ Kxd7 19. Qc4 Rae8 20. Qxf7+ Re7 21. Qc4 Nxe4 22. N1a2 Nxf2 23. Rhf1 Nxd1 24. Rxd1 c6 25. Bf4 d5 26. Qd3 Rhe8 27. Qf5+ Re6 28. Qf7+ R6e7 29. Qf5+ Re6 30. Qxg4 d4 31. Qxg7+ R8e7 32. Qxd4+ Rd6 33. Bxd6 Ke8 34. Bxa3 Rd7 35. Qh8+ Kf7 36. Qh7+ Ke6 37. Qxd7+ Ke5 38. Re1+ Kf4 39. Qf7+ Kg4 40. h3+ Kh4 41. Re4+ Kg3 42. Qg6+ Kh2 43. Qxh6 Kxg2 44. Qe3 Kh1 45. Qe2 Kg1 46. Rf4 Kh1 47. Rg4 c5 48. Qg2# 1-0', datetime='2014.10.28 17:56:55', timestamp=1414519015), Row(event='Rated Classical game', gameid='lichess/003zIozu', white='MartinDolejsky', black='ercasu96', result='1-0', whiteelo=1025, blackelo=1030, eco='A40', opening='Englund Gambit', timecontrol='2700+13', termination='Normal', moves='1. d4 e5 2. dxe5 Qe7 3. f4 Qh4+ 4. g3 Qxg3+ 5. hxg3 Bc5 6. c4 b6 7. Nc3 Ba6 8. Qd3 Nc6 9. a3 d6 10. Bh3 dxe5 11. fxe5 Nxe5 12. Qd5 Bxc4 13. Qxa8+ Ke7 14. Bg5+ Kd6 15. Ne4# 1-0', datetime='2014.10.21 18:38:25', timestamp=1413916705), Row(event='Rated Classical game', gameid='lichess/0096cSmo', white='cnv', black='CSECSU', result='1-0', whiteelo=1566, blackelo=1544, eco='B20', opening='Sicilian Defense: Bowdler Attack', timecontrol='60+12', termination='Normal', moves='1. e4 c5 2. Bc4 d6 3. Qh5 g6 4. Qf3 Nf6 5. Nc3 Bg7 6. Nd5 e6 7. Nxf6+ Qxf6 8. c3 Nd7 9. Qxf6 Nxf6 10. d3 O-O 11. a3 a6 12. Nf3 b5 13. Bb3 d5 14. exd5 exd5 15. O-O c4 16. dxc4 dxc4 17. Bc2 Bb7 18. Nd4 Nh5 19. Be3 Rfe8 20. h3 f5 21. Bg5 Bxd4 22. cxd4 Re2 23. Rac1 Rae8 24. b3 c3 25. Bd3 Ra2 26. a4 b4 27. Bc4+ Kg7 28. d5 Re5 29. d6 Bd5 30. d7 Bxc4 31. bxc4 Rd2 32. d8=Q Rxd8 33. Bxd8 Re2 34. Ba5 c2 35. Bxb4 Nf4 36. Rfe1 Rxe1+ 37. Rxe1 Nd3 38. Bc3+ Kh6 39. Bd2+ g5 40. Ra1 a5 41. h4 Nb4 42. hxg5+ Kh5 43. c5 Kg4 44. Ra3 Nd5 45. c6 Nb6 46. Rc3 1-0', datetime='2014.04.15 20:06:24', timestamp=1397592384)]
+INFO: 2020-10-07 07:31:38,844: 787059681 Moves processed
+INFO: 2020-10-07 07:31:38,844: Moves DF Schema:
+INFO: 2020-10-07 07:31:38,847: root
+ |-- gameid: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- moves: string (nullable = false)
+ |-- board_state: string (nullable = true)
+ |-- move_no: integer (nullable = true)
+
+INFO: 2020-10-07 07:31:38,847: Writing df to Cassandra table: chessdb.games .............
+INFO: 2020-10-07 07:39:23,100: Writing complete .............
+INFO: 2020-10-07 07:39:23,100: Writing df to Cassandra table: chessdb.moves .............
+INFO: 2020-10-07 10:35:38,195: Writing complete .............

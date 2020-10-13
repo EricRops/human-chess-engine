@@ -1,0 +1,39 @@
+INFO: 2020-10-12 00:48:15,653: Reading pgn data from s3a://erops-chess/chesscom-db/titled-games/GM-games* ..........
+INFO: 2020-10-12 00:48:24,905: 1096037 total games loaded .............. 
+INFO: 2020-10-12 00:48:39,522: 1036165 Games processed
+INFO: 2020-10-12 00:48:39,523: Games DF Schema:
+INFO: 2020-10-12 00:48:39,525: root
+ |-- event: string (nullable = true)
+ |-- white: string (nullable = true)
+ |-- black: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- eco: string (nullable = true)
+ |-- opening: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- termination: string (nullable = true)
+ |-- gameid: string (nullable = true)
+ |-- moves: string (nullable = true)
+ |-- datetime: string (nullable = false)
+ |-- timestamp: long (nullable = true)
+
+INFO: 2020-10-12 00:48:39,525: Top few rows of the games DF:
+INFO: 2020-10-12 00:49:20,124: [Row(event="Let's Play!", white='Cats4Sale', black='neurisdr', result='0-1', eco='B92', opening='Sicilian-Defense-Open-Najdorf-Opocensky-Variation-6...e5', whiteelo=1406, blackelo=1494, timecontrol='1/259200', termination='neurisdr won on time', gameid='chesscom/daily/game/101040656', moves='1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be2 e5 0-1', datetime='2014.12.03 21:01:23', timestamp=1417640483), Row(event='K : These are my best friends,12/12/2014 - Board 3', white='DJ_Haubi', black='wlften4678', result='1-0', eco='A08', opening='Kings-Indian-Attack-Sicilian-Variation-3.Bg2-Nf6-4.O-O-Nc6', whiteelo=2151, blackelo=2145, timecontrol='1/604800', termination='DJ_Haubi won by resignation', gameid='chesscom/daily/game/101569503', moves='1. Nf3 d5 2. g3 c5 3. Bg2 Nc6 4. O-O Nf6 5. d3 e5 6. Bg5 Be7 7. Nfd2 O-O 8. Bxf6 Bxf6 9. Nc3 Be6 10. e4 d4 11. Ne2 Rc8 12. f4 Bg4 13. h3 Bd7 14. a4 a6 15. Nf3 Re8 16. g4 exf4 17. Nxf4 Nb4 18. b3 Qc7 19. Qd2 Be5 20. Nxe5 Qxe5 21. a5 f6 22. Rf2 Qd6 23. Raf1 Qc7 24. Nh5 Re5 25. Nxg7 Kxg7 26. Rxf6 Kg8 27. Qh6 Bf5 28. R1xf5 Rxf5 29. Rxf5 Qe7 30. e5 Rc7 31. Be4 Qd8 32. e6 Rg7 33. Rf7 1-0', datetime='2014.12.13 00:37:52', timestamp=1418431072), Row(event='Have fun! - Round 2', white='penguingm1', black='Surt123', result='1-0', eco='A52', opening='Budapest-Defense-3.dxe5-Ng4', whiteelo=2101, blackelo=2018, timecontrol='1/259200', termination='penguingm1 won by resignation', gameid='chesscom/daily/game/114492664', moves='1. d4 Nf6 2. c4 e5 3. dxe5 Ng4 4. e3 Nxe5 5. Nh3 g6 6. Nc3 Bg7 7. Nf4 d6 8. Be2 O-O 9. O-O a5 10. Qc2 Nbc6 11. b3 Bf5 12. Qd2 Re8 13. Bb2 Nd7 14. Nfd5 Nc5 15. Nb5 Bxb2 16. Qxb2 Ne5 17. Nbxc7 Rc8 18. Nxe8 Qxe8 19. Nf6+ 1-0', datetime='2015.07.11 14:43:04', timestamp=1436625784)]
+INFO: 2020-10-12 00:56:47,094: 86211780 Moves processed
+INFO: 2020-10-12 00:56:47,094: Moves DF Schema:
+INFO: 2020-10-12 00:56:47,095: root
+ |-- gameid: string (nullable = true)
+ |-- result: string (nullable = true)
+ |-- whiteelo: integer (nullable = true)
+ |-- blackelo: integer (nullable = true)
+ |-- timecontrol: string (nullable = true)
+ |-- moves: string (nullable = false)
+ |-- board_state: string (nullable = true)
+ |-- move_no: integer (nullable = true)
+
+INFO: 2020-10-12 01:03:43,808: [Row(gameid='chesscom/daily/game/101040656', result='0-1', whiteelo=1406, blackelo=1494, timecontrol='1/259200', moves='e4', board_state='rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq', move_no=1), Row(gameid='chesscom/daily/game/101040656', result='0-1', whiteelo=1406, blackelo=1494, timecontrol='1/259200', moves='c5', board_state='rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq', move_no=2), Row(gameid='chesscom/daily/game/101040656', result='0-1', whiteelo=1406, blackelo=1494, timecontrol='1/259200', moves='Nf3', board_state='rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq', move_no=3)]
+INFO: 2020-10-12 01:10:38,241: Writing df to Cassandra table: chessdb.games .............
+INFO: 2020-10-12 01:11:37,944: Writing complete .............
+INFO: 2020-10-12 01:11:37,944: Writing df to Cassandra table: chessdb.moves .............
+INFO: 2020-10-12 01:32:57,982: Writing complete .............

@@ -85,8 +85,9 @@ python3 data-ingestion/ChessComCrawl/pgn-scraper-thread-chunks.py $user_list $s3
 
 # View some data in S3 to make sure it looks correct
 bucket="erops-chess"
-key="chesscom-db/by-country"
+key="chesscom-db/titled-games"
+aws s3 cp s3://$bucket/$key/IM-games-0.pgn - | head -n 50
 aws s3 ls s3://$bucket/$key --recursive
-aws s3 cp s3://$bucket/$key/ES-games-4.pgn - | head -n 100
+
 
 

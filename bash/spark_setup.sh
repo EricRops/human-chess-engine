@@ -15,10 +15,10 @@
 # Set profile to Insight credentials
 export AWS_PROFILE=insight
 pem_file="~/.ssh/eric-rops-IAM-keypair.pem"
-worker_num_nodes=4
+worker_num_nodes=5
 master_num_nodes=1
 master_type="m5a.large"
-worker_type="c5.2xlarge"
+worker_type="m5.2xlarge"
 
 aws ec2 run-instances \
 	--image-id ami-07a29e5e945228fa1 \
@@ -31,25 +31,25 @@ aws ec2 run-instances \
 	--key-name eric-rops-IAM-keypair \
 	--security-group-ids sg-04bf65989d4033a0b sg-0bd1097bda280de96 sg-0d774a6a1bfebe338 \
 	--ebs-optimized \
-	--block-device-mapping "[ { \"DeviceName\": \"/dev/sda1\", \"Ebs\": { \"VolumeSize\": 5000 } } ]"
+	--block-device-mapping "[ { \"DeviceName\": \"/dev/sda1\", \"Ebs\": { \"VolumeSize\": 200 } } ]"
 	
 master_dns=$(aws ec2 describe-instances \
---query 'Reservations[*].Instances[*].[PublicDnsName]' \
+--query 'Reservations[0].Instances[*].[PublicDnsName]' \
 --filters Name=instance-state-name,Values=running Name=instance-type,Values=$master_type \
 --output text)
 
 master_priv_ip=$(aws ec2 describe-instances \
---query 'Reservations[*].Instances[*].[PrivateIpAddress]' \
+--query 'Reservations[0].Instances[*].[PrivateIpAddress]' \
 --filters Name=instance-state-name,Values=running Name=instance-type,Values=$master_type \
 --output text)
 
 workers_dns=$(aws ec2 describe-instances \
---query 'Reservations[*].Instances[*].[PublicDnsName]' \
+--query 'Reservations[0].Instances[*].[PublicDnsName]' \
 --filters Name=instance-state-name,Values=running Name=instance-type,Values=$worker_type \
 --output text)
 
 workers_priv_ip=$(aws ec2 describe-instances \
---query 'Reservations[*].Instances[*].[PrivateIpAddress]' \
+--query 'Reservations[0].Instances[*].[PrivateIpAddress]' \
 --filters Name=instance-state-name,Values=running Name=instance-type,Values=$worker_type \
 --output text)
 
@@ -79,6 +79,7 @@ ssh -i $pem_file ubuntu@$master_dns 'cat ~/.ssh/id_rsa.pub' | ssh -i $pem_file u
 ssh -i $pem_file ubuntu@$master_dns 'cat ~/.ssh/id_rsa.pub' | ssh -i $pem_file ubuntu@${workers_dns_str[1]} 'cat >> ~/.ssh/authorized_keys'
 ssh -i $pem_file ubuntu@$master_dns 'cat ~/.ssh/id_rsa.pub' | ssh -i $pem_file ubuntu@${workers_dns_str[2]} 'cat >> ~/.ssh/authorized_keys'
 ssh -i $pem_file ubuntu@$master_dns 'cat ~/.ssh/id_rsa.pub' | ssh -i $pem_file ubuntu@${workers_dns_str[3]} 'cat >> ~/.ssh/authorized_keys'
+ssh -i $pem_file ubuntu@$master_dns 'cat ~/.ssh/id_rsa.pub' | ssh -i $pem_file ubuntu@${workers_dns_str[4]} 'cat >> ~/.ssh/authorized_keys'
 
 # Set local machine and master config files for easy SSH access between nodes
 
@@ -110,6 +111,10 @@ echo "    User ubuntu" >> ~/.ssh/config_master
 echo "    Port 22" >> ~/.ssh/config_master
 echo "Host worker4" >> ~/.ssh/config_master
 echo "    HostName ${workers_ip_str[3]}" >> ~/.ssh/config_master
+echo "    User ubuntu" >> ~/.ssh/config_master
+echo "    Port 22" >> ~/.ssh/config_master
+echo "Host worker5" >> ~/.ssh/config_master
+echo "    HostName ${workers_ip_str[4]}" >> ~/.ssh/config_master
 echo "    User ubuntu" >> ~/.ssh/config_master
 echo "    Port 22" >> ~/.ssh/config_master
 
@@ -180,6 +185,7 @@ echo "${workers_ip_str[0]}" >> /usr/local/spark/conf/slaves.template
 echo "${workers_ip_str[1]}" >> /usr/local/spark/conf/slaves.template
 echo "${workers_ip_str[2]}" >> /usr/local/spark/conf/slaves.template
 echo "${workers_ip_str[3]}" >> /usr/local/spark/conf/slaves.template
+echo "${workers_ip_str[4]}" >> /usr/local/spark/conf/slaves.template
 # Comment out the local host machine (doesn't seem right to be there)
 sed -i -e '19s/^/# /' /usr/local/spark/conf/slaves.template
 sudo cp /usr/local/spark/conf/slaves.template /usr/local/spark/conf/slaves
