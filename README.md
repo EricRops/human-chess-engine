@@ -2,7 +2,7 @@
     <img src="images/chess-cover.PNG" width="800" height="300"/>
 </p>
 
-# Human Chess Engine: Play Chess Against a Database!
+# Human Chess Engine: Play Chess Against a Database
 ## Insight Data Engineering
 
 ## Motivation
