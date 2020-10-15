@@ -26,7 +26,7 @@ However, I wanted a way to play against all the humans that have ever played bef
 ## Solution
 Play chess against a historic database! The user makes their move. The database returns the **most common next move.**  
 A demo of the final product is here: ADD YOUTUBE LINK  
-The website of the Flask app is here: [chess.clouddata.club](http://chess.clouddata.club/)
+The **website** of the Flask app is here: [chess.clouddata.club](http://chess.clouddata.club/)  
 **NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
 ## Dataset
