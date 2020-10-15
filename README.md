@@ -5,6 +5,16 @@
 # Human Chess Engine: Play Chess Against a Database
 ## Insight Data Engineering
 
+## Setup Instructions
+1. Data ingestion into S3:
+    + Procedure to download data from lichess.org found in **./data-ingestion/s3_load_lichess.sh**
+    + Procedure to scrape chess games from Chess.com found in **./data-ingestion/s3_load_chesscom.sh**
+2. Setup Spark Cluster on EC2 (the steps I followed are found in  **./bash/spark_setup.sh**)
+3. Setup Cassandra Cluster on EC2 (the steps I followed are found in  **./bash/cassandra_setup.sh**)
+4. Run Spark ETL job following **./bash/run_spark.sh**)
+5. Check Cassandra tables following **./bash/run_cassandra.sh**
+6. Launch Flask app by following **./bash/run_flask.sh**
+
 ## Motivation
 About 20 million users are active on the top three online chess platforms. The main ways that people play are:
 - Human vs human
@@ -17,6 +27,7 @@ However, I wanted a way to play against all the humans that have ever played bef
 Play chess against a historic database! The user makes their move. The database returns the **most common next move.**  
 A demo of the final product is here: ADD YOUTUBE LINK  
 The website of the Flask app is here: [chess.clouddata.club](http://chess.clouddata.club/)
+**NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
 ## Dataset
 - 1.5 billion games from [lichess.org](https://database.lichess.org/)

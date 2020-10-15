@@ -11,6 +11,7 @@ cluster = Cluster(contact_points=cassandra_seeds, protocol_version=4,
 cassandra = cluster.connect('chessdb')
 
 app = Flask(__name__)
+app.secret_key = 'let-me-use-session'
 
 
 @app.route('/')
