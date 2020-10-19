@@ -29,12 +29,12 @@ However, I wanted new way to play: to play against all the humans that have ever
 Play chess against a historic database! The user makes their move.  
 The database returns the **most common next move.**  
 A **demo** of the final product is here: ADD YOUTUBE LINK  
-The **website** of the Flask app had to be taken down due to the budget.
+The **website** of the Flask app had to be taken down due to the budget.  
 **NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
 ## Dataset
 - 1.5 billion games from [lichess.org](https://database.lichess.org/)
-- [Chess.com API](https://www.chess.com/news/view/published-data-api) (Over 1 billion games stored) 
+- [Chess.com API](https://www.chess.com/news/view/published-data-api) (Over 1 billion games stored)  
 - **NOTE:** Due to the three week timeframe, I was able to get 100 million games processed.
 - This works out to **4 billion historic board configurations** (about 1 TB of data)
 
