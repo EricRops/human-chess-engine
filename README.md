@@ -11,7 +11,9 @@
     + Procedure to scrape chess games from Chess.com found in **./data-ingestion/s3_load_chesscom.sh**
 2. Setup Spark Cluster on EC2 (the steps I followed are found in  **./bash/spark_setup.sh**)
 3. Setup Cassandra Cluster on EC2 (the steps I followed are found in  **./bash/cassandra_setup.sh**)
-4. Run Spark ETL job following **./bash/run_spark.sh**)
+4. Run Spark PySpark job following **./bash/run_spark.sh**). Call one of the following ETL scripts:
+    +  **./data-processing/chesscom-etl.py** to process data from Chess.com
+    +  **./data-processing/lichess-etl.py** to process data from lichess.org
 5. Check Cassandra tables following **./bash/run_cassandra.sh**
 6. Launch Flask app by following **./bash/run_flask.sh**
 
@@ -21,13 +23,13 @@ About 20 million users are active on the top three online chess platforms. The m
 - Human vs chess engine (ex: Stockfish)
 - Human vs Artificial Intelligence (if you want to lose real bad. Ex: Google DeepMind's AlphaZero)
 
-However, I wanted a way to play against all the humans that have ever played before.
+However, I wanted new way to play: to play against all the humans that have ever played before.
 
 ## Solution
 Play chess against a historic database! The user makes their move.  
 The database returns the **most common next move.**  
 A **demo** of the final product is here: ADD YOUTUBE LINK  
-The **website** of the Flask app is here: [chess.clouddata.club](http://chess.clouddata.club/)  
+The **website** of the Flask app had to be taken down due to the budget.
 **NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
 ## Dataset
@@ -63,11 +65,10 @@ WHERE board_state = 'BOARD_STATE_FEN'
 AND blackelo > {ratingmin} AND blackelo < {ratingmax}
 ```
 
-## Flask App
-[chess.clouddata.club](http://chess.clouddata.club/)
-
-## Youtube Demo Link
+## Demo Links (to be added soon)
+- 40 second screencast of the Flask Chess App functionality: 
+- 5 minute screencast of project presentation, plus Flask App, WITH commentary: 
 
 ## Future Production Improvements
-- Attach Airflow to continuously expand the database. Will improve the experience and minimize query “no results”
+- Attach Airflow to continuously expand the database. Will improve the user experience and minimize query “no results”
 - Create another Cassandra table to allow the option of playing as the black pieces
