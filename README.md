@@ -23,7 +23,7 @@ About 20 million users are active on the top three online chess platforms. The m
 - Human vs chess engine (ex: Stockfish)
 - Human vs Artificial Intelligence (if you want to lose real bad. Ex: Google DeepMind's AlphaZero)
 
-However, I wanted new way to play: to play against all the humans that have ever played before.
+However, I wanted a new way to play: to play against all the humans that have ever played before.
 
 ## Solution
 Play chess against a historic database! The user makes their move.  
