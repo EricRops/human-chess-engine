@@ -3,7 +3,8 @@
 </p>
 
 # Human Chess Engine: Play Chess Against a Database
-## Insight Data Engineering
+## Insight Data Engineering  
+Presentation slides located at [this link](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)
 
 ## Setup Instructions
 1. Data ingestion into S3:
@@ -21,20 +22,19 @@
 About 20 million users are active on the top three online chess platforms. The main ways that people play are:
 - Human vs human
 - Human vs chess engine (ex: Stockfish)
-- Human vs Artificial Intelligence (if you want to lose real bad. Ex: Google DeepMind's AlphaZero)
+- Human vs Artificial Intelligence (if you want to lose real bad. ex: Google DeepMind's AlphaZero)
 
 However, I wanted a new way to play: to play against all the humans that have ever played before.
 
 ## Solution
 Play chess against a historic database! The user makes their move.  
 The database returns the **most common next move.**  
-The **recorded presentation** is here: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)
+The **recorded presentation** is here: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)  
 The **website** of the Flask app had to be taken down due to the budget.  
-**NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
-## Flask Chess App Demo
+## Flask Chess App Demo (showing frontend and backend)
 <p align="center">
-    <img src="images/chess-demo-final.gif" width="1500"/>
+    <img src="images/chess-demo-final.gif"/>
 </p>
 
 ## Dataset
@@ -48,13 +48,14 @@ Chess games are stored in Portable Game Notation (PGN) files. Below is a sample 
 <img src="images/pgn-file.png">
 
 ## Data Pipeline
-<img src="images/pipeline.PNG">
+<img src="images/pipeline.PNG">  
+**NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
 ## Cassandra Data Model
 Two tables were stored in Cassandra:
-- **games:** one row for each game (100 million rows)
+- **games:** one row for each game (**100 million rows**)
     + *event, white, black, result, eco, opening, whiteelo, blackelo, timecontrol, termination, gameid, moves, datetime, timestamp*
-- **moves:** one row for each move (4 billion rows)
+- **moves:** one row for each move (**4 billion rows**)
     + *gameid, result, whiteelo, blackelo, timecontrol, move, board_state, move_no*
 
 ## Cassandra Query
@@ -70,7 +71,11 @@ WHERE board_state = 'BOARD_STATE_FEN'
 AND blackelo > {ratingmin} AND blackelo < {ratingmax}
 ```
 
-## Demo Links (to be added soon)
+### Query Speed  
+First 2 moves: about **10 seconds**
+After move 4: **less than 1 second**
+
+## Demo Links
 - 40 second screencast of the Flask Chess App functionality: [Youtube Demo Link](https://www.youtube.com/watch?v=Wm0CyzB7CR4)
 - 6 minute screencast of presentation, plus Flask App, WITH commentary: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)
 
