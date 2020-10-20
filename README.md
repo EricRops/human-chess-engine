@@ -28,9 +28,14 @@ However, I wanted a new way to play: to play against all the humans that have ev
 ## Solution
 Play chess against a historic database! The user makes their move.  
 The database returns the **most common next move.**  
-A **demo** of the final product is here: ADD YOUTUBE LINK  
+The **recorded presentation** is here: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)
 The **website** of the Flask app had to be taken down due to the budget.  
 **NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
+
+## Flask Chess App Demo:
+<p align="center">
+    <img src="images/chess-demo-final.gif"/>
+</p>
 
 ## Dataset
 - 1.5 billion games from [lichess.org](https://database.lichess.org/)
@@ -66,8 +71,8 @@ AND blackelo > {ratingmin} AND blackelo < {ratingmax}
 ```
 
 ## Demo Links (to be added soon)
-- 40 second screencast of the Flask Chess App functionality: 
-- 5 minute screencast of project presentation, plus Flask App, WITH commentary: 
+- 40 second screencast of the Flask Chess App functionality: [Youtube Demo Link](https://www.youtube.com/watch?v=Wm0CyzB7CR4)
+- 6 minute screencast of presentation, plus Flask App, WITH commentary: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)
 
 ## Future Production Improvements
 - Attach Airflow to continuously expand the database. Will improve the user experience and minimize query “no results”
