@@ -32,9 +32,9 @@ The **recorded presentation** is here: [Youtube Presentation Link](https://www.y
 The **website** of the Flask app had to be taken down due to the budget.  
 **NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
-## Flask Chess App Demo:
+## Flask Chess App Demo
 <p align="center">
-    <img src="images/chess-demo-final.gif"/>
+    <img src="images/chess-demo-final.gif" width="1000" height="500"/>
 </p>
 
 ## Dataset
