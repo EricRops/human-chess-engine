@@ -34,7 +34,7 @@ The **website** of the Flask app had to be taken down due to the budget.
 
 ## Flask Chess App Demo
 <p align="center">
-    <img src="images/chess-demo-final.gif" width="1000" height="500"/>
+    <img src="images/chess-demo-final.gif" width="1500"/>
 </p>
 
 ## Dataset
