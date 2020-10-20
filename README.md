@@ -4,7 +4,7 @@
 
 # Human Chess Engine: Play Chess Against a Database
 ## Insight Data Engineering  
-Presentation slides located at [this link](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)
+Presentation slides located at [this link.](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)
 
 ## Setup Instructions
 1. Data ingestion into S3:
@@ -28,7 +28,7 @@ However, I wanted a new way to play: to play against all the humans that have ev
 
 ## Solution
 Play chess against a historic database! The user makes their move.  
-The database returns the **most common next move.**  
+The database returns the **most common next move ever made.**  
 The **recorded presentation** is here: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)  
 The **website** of the Flask app had to be taken down due to the budget.  
 
@@ -40,7 +40,7 @@ The **website** of the Flask app had to be taken down due to the budget.
 ## Dataset
 - 1.5 billion games from [lichess.org](https://database.lichess.org/)
 - [Chess.com API](https://www.chess.com/news/view/published-data-api) (Over 1 billion games stored)  
-- **NOTE:** Due to the three week timeframe, I was able to get 100 million games processed.
+- **NOTE:** Due to the three week timeframe, I was able to get 100 million games processed
 - This works out to **4 billion historic board configurations** (about 1 TB of data)
 
 ## PGN Files
@@ -49,6 +49,7 @@ Chess games are stored in Portable Game Notation (PGN) files. Below is a sample 
 
 ## Data Pipeline
 <img src="images/pipeline.PNG">  
+
 **NOTE:** The Flask frontend was based on *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
 
 ## Cassandra Data Model
@@ -72,7 +73,7 @@ AND blackelo > {ratingmin} AND blackelo < {ratingmax}
 ```
 
 ### Query Speed  
-First 2 moves: about **10 seconds**
+First 2 moves: about **10 seconds**  
 After move 4: **less than 1 second**
 
 ## Demo Links
@@ -80,5 +81,6 @@ After move 4: **less than 1 second**
 - 6 minute screencast of presentation, plus Flask App, WITH commentary: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)
 
 ## Future Production Improvements
-- Attach Airflow to continuously expand the database. Will improve the user experience and minimize query “no results”
-- Create another Cassandra table to allow the option of playing as the black pieces
+- Attach Airflow to continuously expand the database. Will improve the user experience and minimize query 
+“no results,” especially in the endgame.
+- Create another Cassandra table to allow the option of playing as the black pieces.
