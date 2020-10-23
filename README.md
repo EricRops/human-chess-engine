@@ -25,8 +25,8 @@ Presentation slides located at [this link.](https://docs.google.com/presentation
 ├── logs                    # PySpark logs created from each Spark job (provided as examples to show my tracking of the jobs)  
 ```
 ## Setup Instructions
-1. Place your EC2 keypair PEM file into the folder: **~/.ssh**
-2. Place your AWS_ACCESS_KEY_ID and AWS_SECRET_KEY_ID into the file: **~/.aws/credentials**
+1. Place your EC2 keypair PEM file into your local folder: **~/.ssh**
+2. Place your AWS_ACCESS_KEY_ID and AWS_SECRET_KEY_ID into a local file: **~/.aws/credentials**
 3. Data ingestion into S3:
     + Procedure to download data from lichess.org found in **./data-ingestion/s3_load_lichess.sh**
     + Procedure to scrape chess games from Chess.com found in **./data-ingestion/s3_load_chesscom.sh**
