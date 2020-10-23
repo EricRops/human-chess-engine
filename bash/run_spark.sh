@@ -6,7 +6,7 @@ pem_file="~/.ssh/eric-rops-IAM-keypair.pem"
 worker_num_nodes=5
 master_num_nodes=1
 master_type="m5a.large"
-worker_type="c5.2xlarge"
+worker_type="m5.2xlarge"
 
 # Get master DNS string
 master_dns=$(aws ec2 describe-instances \
@@ -60,7 +60,6 @@ mv ./logs/logfile.log ./logs/log-$timestamp.log
 
 
 ## Spark parameters that made the job run slower
-
-	--conf spark.default.parallelism=100 \
+#	--conf spark.default.parallelism=100 \
 
 

@@ -6,6 +6,23 @@
 ## Insight Data Engineering  
 Presentation slides located at [this link.](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)
 
+## Folder Structure
+|── app                     # Flask frontend based off *brokenloop's* repo: https://github.com/brokenloop/FlaskChess. 
+├── bash                    # Bash lookalike files containing the Linux commands to setup the AWS infrastructure
+├── data-ingestion          # Code to pull data from lichess.org and Chess.com into S3
+│   ├── ChessComCrawl       # Python files to scrape data from Chess.com into S3
+│   ├── s3_load_chesscom.sh # Bash lookalike file with the commands to scrape Chess.com using an EC2 instance
+│   ├── s3_load_lichess.sh  # Bash lookalike file with the commands to download lichess.org data using an EC2 instance
+├── data-processing         # Code to pull data from lichess.org and Chess.com into S3
+│   ├── chesscom-etl.py     # PySpark script to load Chess.com games from S3, process, and write to Cassandra
+│   ├── lichess-etl.py      # PySpark script to load lichess.org games from S3, process, and write to Cassandra
+│   ├── test-spark-s3.py    # Simple PySpark script to test that Spark and S3 can talk to each other
+├── database-scripts        # Code to setup the Cassandra database (using the Cassandra Python driver)
+│   ├── create-tables.py    # Create Cassandra keyspace and the tables (games, moves) if they do not already exist
+│   ├── queries.py          # Query a given board state from the moves table (mostly for quality control, the Flask app sends queries separately)
+|── images                  # Images and GIF for the main README 
+├── logs                    # PySpark logs created from each Spark job (provided as examples to show my tracking of the jobs)
+
 ## Setup Instructions
 1. Data ingestion into S3:
     + Procedure to download data from lichess.org found in **./data-ingestion/s3_load_lichess.sh**
@@ -81,6 +98,6 @@ After move 4: **less than 1 second**
 - 6 minute screencast of presentation, plus Flask App, WITH commentary: [Youtube Presentation Link](https://www.youtube.com/watch?v=t3KEKx6tMcY)
 
 ## Future Production Improvements
-- Attach Airflow to continuously expand the database. Will improve the user experience and minimize query 
+- Attach Airflow to continuously expand the database. Will improve user experience and minimize query 
 “no results,” especially in the endgame.
 - Create another Cassandra table to allow the option of playing as the black pieces.
