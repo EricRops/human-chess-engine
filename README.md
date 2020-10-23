@@ -25,16 +25,18 @@ Presentation slides located at [this link.](https://docs.google.com/presentation
 ├── logs                    # PySpark logs created from each Spark job (provided as examples to show my tracking of the jobs)  
 ```
 ## Setup Instructions
-1. Data ingestion into S3:
+1. Place your EC2 keypair PEM file into the folder: **~/.ssh**
+2. Place your AWS_ACCESS_KEY_ID and AWS_SECRET_KEY_ID into the file: **~/.aws/credentials**
+3. Data ingestion into S3:
     + Procedure to download data from lichess.org found in **./data-ingestion/s3_load_lichess.sh**
     + Procedure to scrape chess games from Chess.com found in **./data-ingestion/s3_load_chesscom.sh**
-2. Setup Spark Cluster on EC2 (the steps I followed are found in  **./bash/spark_setup.sh**)
-3. Setup Cassandra Cluster on EC2 (the steps I followed are found in  **./bash/cassandra_setup.sh**)
-4. Run Spark PySpark job following **./bash/run_spark.sh**). Call one of the following ETL scripts:
+4. Setup Spark Cluster on EC2 (the steps I followed are found in  **./bash/spark_setup.sh**)
+5. Setup Cassandra Cluster on EC2 (the steps I followed are found in  **./bash/cassandra_setup.sh**)
+6. Run Spark PySpark job following **./bash/run_spark.sh**). Call one of the following ETL scripts:
     +  **./data-processing/chesscom-etl.py** to process data from Chess.com
     +  **./data-processing/lichess-etl.py** to process data from lichess.org
-5. Check Cassandra tables following **./bash/run_cassandra.sh**
-6. Launch Flask app by following **./bash/run_flask.sh**
+7. Check Cassandra tables following **./bash/run_cassandra.sh**
+8. Launch Flask app by following **./bash/run_flask.sh**
 
 ## Motivation
 About 20 million users are active on the top three online chess platforms. The main ways that people play are:
