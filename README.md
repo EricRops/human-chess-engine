@@ -7,6 +7,7 @@
 Presentation slides located at [this link.](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)
 
 ## Folder Structure
+```
 |── app                     # Flask frontend based off *brokenloop's* repo: https://github.com/brokenloop/FlaskChess.  
 ├── bash                    # Bash lookalike files containing the Linux commands to setup the AWS infrastructure  
 ├── data-ingestion          # Code to pull data from lichess.org and Chess.com into S3  
@@ -22,7 +23,7 @@ Presentation slides located at [this link.](https://docs.google.com/presentation
 │   ├── queries.py          # Query a given board state from the moves table (mostly for quality control, the Flask app sends queries separately)  
 |── images                  # Images and GIF for the main README  
 ├── logs                    # PySpark logs created from each Spark job (provided as examples to show my tracking of the jobs)  
-
+```
 ## Setup Instructions
 1. Data ingestion into S3:
     + Procedure to download data from lichess.org found in **./data-ingestion/s3_load_lichess.sh**
