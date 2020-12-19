@@ -4,7 +4,7 @@
 
 # Human Chess Engine: Play Chess Against a Database
 ## Insight Data Engineering  
-Presentation slides located at [this link.](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)
+Presentation slides located at [this link.](https://docs.google.com/presentation/d/1T-4T8UEvlTqryb12pExy90lKWwECutIUUivGWsC7EtM/edit?usp=sharing)  
 Six minute presentation video located at [this link.](https://www.youtube.com/watch?v=t3KEKx6tMcY)
 
 ## Folder Structure
