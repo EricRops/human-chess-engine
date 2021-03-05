@@ -206,7 +206,9 @@ def game_moves(df_games):
     board_state_udf = udf(board_state, ArrayType(StringType()))
     df = df.withColumn("board_state", board_state_udf(df.moves))
 
-    # Now explode into one row for each move (need to explode by both moves and board_state columns)
+    # Now explode into one row for each move (need to explode by both moves and board_state columns):
+	# 1. arrays_zip function merges the moves and board_state columns (which are arrays)
+	# 2. explode function then explodes each (moves, board_state) pair into a separate row
     df = df.withColumn("tmp", arrays_zip("moves", "board_state")) \
         .withColumn("tmp", explode("tmp")) \
         .select("gameid", "result", "whiteelo", "blackelo",
